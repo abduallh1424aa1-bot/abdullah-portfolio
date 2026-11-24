@@ -1,0 +1,906 @@
+/* ==========================================================
+   ملف التصميم - عدّل الألوان من القسم ١ وكل شي ثاني يتغير معها
+   ========================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;700&display=swap');
+
+
+/* ==========================================================
+   ١. الألوان (غيّرها من هنا)
+   ========================================================== */
+:root {
+    --bg: #071a24;          /* خلفية الصفحة */
+    --surface: #102130;     /* خلفية البطاقات */
+    --line: #1d3a4d;        /* لون الحدود والخطوط */
+
+    --ink: #ffffff;         /* لون النص الأساسي */
+    --muted: #8fa8b8;       /* لون النص الخافت */
+    --cyan: #3fd0f0;        /* اللون الرئيسي */
+    --mint: #7be8b8;        /* لون ثانوي (أخضر) */
+    --amber: #ffc65c;       /* لون ثالث (أصفر) */
+
+    --hero-name: #ffffff;   /* لون الاسم في الهيرو */
+    --hero-text: #dbe9f0;   /* لون النبذة في الهيرو */
+}
+
+
+/* ==========================================================
+   ٢. إعدادات عامة للصفحة
+   ========================================================== */
+
+/* إخفاء قوائم Streamlit العلوية */
+#MainMenu,
+footer,
+header[data-testid="stHeader"],
+[data-testid="stToolbar"],
+[data-testid="stDecoration"] {
+    display: none !important;
+}
+
+/* إخفاء أيقونة الرابط بجانب العناوين */
+[data-testid="stHeaderActionElements"] {
+    display: none !important;
+}
+
+/* الخط */
+html,
+body,
+.stApp,
+[class*="css"] {
+    font-family: 'IBM Plex Sans Arabic', Tahoma, sans-serif;
+}
+
+/* خلفية الصفحة (الاتجاه يتحدد من app.py حسب اللغة) */
+.stApp {
+    background:
+        radial-gradient(1100px 520px at 85% -8%, #123a52 0%, transparent 60%),
+        var(--bg);
+}
+
+/* عرض المحتوى */
+.block-container {
+    max-width: 980px;
+    padding: 1.5rem 1rem 3rem;
+}
+
+/* زر تغيير اللغة */
+[data-testid="stRadio"] label p {
+    color: var(--ink);
+    font-size: 15px;
+}
+
+
+/* ==========================================================
+   ٣. القسم العلوي (الهيرو): الاسم والمسمى والنبذة
+   ========================================================== */
+.hero {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    padding: 46px 40px;
+    margin-bottom: 22px;
+    background: linear-gradient(135deg, #0f2a3b 0%, #0a1823 100%);
+    animation: rise 0.7s ease both;
+}
+
+/* الدائرة المضيئة في زاوية الهيرو */
+.hero:before {
+    content: "";
+    position: absolute;
+    inset-inline-start: -90px;
+    top: -90px;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(63, 208, 240, 0.35), transparent 70%);
+}
+
+/* شارة "منفتح على فرص" */
+.stApp .hero .open {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(123, 232, 184, 0.12);
+    color: var(--mint) !important;
+    border: 1px solid rgba(123, 232, 184, 0.4);
+    padding: 5px 14px;
+    border-radius: 999px;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+/* النقطة الخضراء داخل الشارة */
+.hero .open i {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--mint);
+}
+
+/* الاسم */
+.stApp .hero h1 {
+    position: relative;
+    margin: 0 0 8px;
+    padding: 0;
+    font-size: clamp(34px, 6vw, 58px);   /* يكبر ويصغر حسب الشاشة */
+    line-height: 1.2;
+    font-weight: 700;
+    color: var(--hero-name) !important;
+    -webkit-text-fill-color: var(--hero-name) !important;
+}
+
+/* المسمى الوظيفي */
+.stApp .hero .role {
+    position: relative;
+    font-size: clamp(17px, 2.4vw, 22px);
+    font-weight: 500;
+    margin-bottom: 18px;
+    color: var(--cyan) !important;
+    -webkit-text-fill-color: var(--cyan) !important;
+}
+
+/* النبذة */
+.stApp .hero p {
+    position: relative;
+    max-width: 640px;
+    margin: 0 0 26px;
+    line-height: 2;
+    font-size: 17px;
+    color: var(--hero-text) !important;
+    -webkit-text-fill-color: var(--hero-text) !important;
+}
+
+/* زر لينكدإن */
+.cta {
+    position: relative;
+    display: inline-block;
+    background: var(--cyan);
+    color: #06222e !important;
+    font-weight: 700;
+    text-decoration: none !important;
+    padding: 12px 26px;
+    border-radius: 12px;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgba(63, 208, 240, 0.35);
+}
+
+
+/* ==========================================================
+   ٤. بطاقات الأرقام (المعدل، الأدوار، الشهادات، المهارات)
+   ========================================================== */
+.stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 14px;
+    margin-bottom: 34px;
+}
+
+.stat {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 18px 20px;
+}
+
+/* الرقم الكبير */
+.stat b {
+    display: block;
+    font-size: 34px;
+    line-height: 1.2;
+    color: var(--ink);
+}
+
+/* الوصف تحت الرقم */
+.stat span {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+
+/* ==========================================================
+   ٥. عناوين الأقسام (المهارات، الخبرات، ...)
+   ========================================================== */
+.sec {
+    margin-bottom: 36px;
+}
+
+.stApp .sec h2 {
+    position: relative;
+    font-size: 26px;
+    font-weight: 700;
+    margin: 0 0 18px;
+    padding: 0 0 10px;
+    border-bottom: 2px solid var(--line);
+    color: var(--ink) !important;
+    -webkit-text-fill-color: var(--ink) !important;
+}
+
+/* الخط الملون تحت العنوان */
+.sec h2:after {
+    content: "";
+    position: absolute;
+    inset-inline-start: 0;
+    bottom: -2px;
+    width: 70px;
+    height: 2px;
+    background: var(--cyan);
+}
+
+
+/* ==========================================================
+   ٦. المهارات
+   ========================================================== */
+.skgrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 14px;
+}
+
+.sk {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 16px 18px;
+    transition: border-color 0.15s ease;
+}
+
+.sk:hover {
+    border-color: var(--cyan);
+}
+
+/* صف اسم المهارة والمستوى */
+.sk-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+    color: var(--ink);
+    font-weight: 500;
+}
+
+/* شارة المستوى */
+.lv {
+    font-size: 13px;
+    padding: 2px 12px;
+    border-radius: 999px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.lv-adv {                                   /* متقدم */
+    background: rgba(123, 232, 184, 0.15);
+    color: var(--mint);
+}
+
+.lv-mid {                                   /* متوسط */
+    background: rgba(63, 208, 240, 0.15);
+    color: var(--cyan);
+}
+
+.lv-beg {                                   /* مبتدئ */
+    background: rgba(255, 198, 92, 0.15);
+    color: var(--amber);
+}
+
+/* شريط المستوى */
+.bar {
+    height: 7px;
+    border-radius: 99px;
+    background: #0a1823;
+    overflow: hidden;
+}
+
+.bar i {
+    display: block;
+    height: 100%;
+    border-radius: 99px;
+    background: linear-gradient(270deg, var(--cyan), var(--mint));
+}
+
+
+/* ==========================================================
+   ٧. الخبرات (الخط الزمني)
+   ========================================================== */
+.tl {
+    position: relative;
+    padding-inline-start: 30px;
+    border-inline-start: 2px solid var(--line);
+    margin-inline-start: 8px;
+}
+
+.tl-item {
+    position: relative;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 18px 22px;
+    margin-bottom: 16px;
+}
+
+/* النقطة على الخط الزمني */
+.tl-item:before {
+    content: "";
+    position: absolute;
+    inset-inline-start: -41px;
+    top: 24px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 3px solid var(--cyan);
+}
+
+/* اسم الدور */
+.tl-item .r {
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--ink);
+}
+
+/* اسم الجهة */
+.tl-item .o {
+    color: var(--cyan);
+    font-size: 14px;
+    margin-top: 2px;
+}
+
+/* الوصف */
+.tl-item .d {
+    color: var(--ink);
+    line-height: 1.9;
+    margin-top: 8px;
+}
+
+
+/* ==========================================================
+   ٨. الشهادات
+   ========================================================== */
+.chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.chip {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    color: var(--ink);
+    padding: 9px 18px;
+    border-radius: 12px;
+    font-size: 15px;
+}
+
+/* علامة الصح قبل كل شهادة */
+.chip:before {
+    content: "✓";
+    color: var(--mint);
+    margin-inline-end: 8px;
+    font-weight: 700;
+}
+
+
+/* ==========================================================
+   ٩. التعليم واللغات (بطاقات)
+   ========================================================== */
+.two {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 14px;
+}
+
+/* بطاقة وحدة بعرض محدد (غيّر 440px لو تبغاها أعرض أو أضيق) */
+.two.single {
+    grid-template-columns: minmax(280px, 440px);
+}
+
+.card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 20px 22px;
+}
+
+.card .t {                                  /* العنوان */
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--ink);
+}
+
+.card .s {                                  /* العنوان الفرعي */
+    color: var(--cyan);
+    margin-top: 4px;
+    font-size: 15px;
+}
+
+.card .m {                                  /* التفاصيل */
+    color: var(--muted);
+    margin-top: 6px;
+    font-size: 14px;
+}
+
+/* صفوف اللغات */
+.lang {
+    display: flex;
+    justify-content: space-between;
+    color: var(--ink);
+    padding: 6px 0;
+}
+
+.lang span:last-child {
+    color: var(--muted);
+}
+
+
+/* ==========================================================
+   ١٠. أسفل الصفحة
+   ========================================================== */
+.foot {
+    text-align: center;
+    color: var(--muted);
+    font-size: 14px;
+    margin-top: 44px;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+}
+
+
+/* ==========================================================
+   ١١. الحركة والجوال
+   ========================================================== */
+
+/* حركة ظهور الهيرو عند فتح الصفحة */
+@keyframes rise {
+    from {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+/* إيقاف الحركة لمن يفضل ذلك في جهازه */
+@media (prefers-reduced-motion: reduce) {
+    .hero {
+        animation: none;
+    }
+}
+
+/* تعديل للشاشات الصغيرة (الجوال) */
+@media (max-width: 640px) {
+    .hero {
+        padding: 32px 22px;
+    }
+}
+
+/* =========================================
+   RESPONSIVE DESIGN - MOBILE & TABLET
+========================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.stApp {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.block-container {
+    width: 100%;
+    max-width: 980px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+/* Tablet */
+@media screen and (max-width: 768px) {
+
+    .block-container {
+        padding: 1rem 16px 2rem;
+    }
+
+    .hero {
+        padding: 32px 24px;
+        border-radius: 18px;
+    }
+
+    .hero h1 {
+        font-size: 36px;
+        overflow-wrap: anywhere;
+    }
+
+    .hero p {
+        font-size: 15px;
+        line-height: 1.9;
+    }
+
+    .stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .skgrid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .two,
+    .two.single {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .tl-item {
+        padding: 16px;
+    }
+
+    .sec h2 {
+        font-size: 23px;
+    }
+}
+
+/* Mobile */
+@media screen and (max-width: 480px) {
+
+    .block-container {
+        padding: 12px 12px 24px;
+    }
+
+    .hero {
+        padding: 26px 18px;
+        margin-bottom: 16px;
+    }
+
+    .hero h1 {
+        font-size: 30px;
+        line-height: 1.5;
+    }
+
+    .hero .role {
+        font-size: 16px;
+        line-height: 1.8;
+    }
+
+    .hero p {
+        font-size: 14px;
+    }
+
+    .hero .open {
+        font-size: 12px;
+        padding: 5px 10px;
+    }
+
+    .cta {
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: 12px;
+    }
+
+    .stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+    }
+
+    .stat {
+        padding: 14px 10px;
+        min-width: 0;
+    }
+
+    .stat b {
+        font-size: 27px;
+    }
+
+    .stat span {
+        font-size: 12px;
+        overflow-wrap: anywhere;
+    }
+
+    .skgrid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .sk {
+        padding: 14px;
+        min-width: 0;
+    }
+
+    .sk-top {
+        font-size: 13px;
+        flex-wrap: wrap;
+    }
+
+    .tl {
+        padding-inline-start: 20px;
+        margin-inline-start: 5px;
+    }
+
+    .tl-item {
+        padding: 14px;
+        margin-bottom: 12px;
+    }
+
+    .tl-item .r {
+        font-size: 16px;
+    }
+
+    .tl-item .d {
+        font-size: 13px;
+        line-height: 1.8;
+        overflow-wrap: anywhere;
+    }
+
+    .tl-item:before {
+        inset-inline-start: -31px;
+        width: 12px;
+        height: 12px;
+    }
+
+    .sec {
+        margin-bottom: 28px;
+    }
+
+    .sec h2 {
+        font-size: 21px;
+    }
+
+    .card {
+        padding: 16px;
+    }
+
+    .chips {
+        gap: 7px;
+    }
+
+    .chip {
+        font-size: 13px;
+        padding: 8px 12px;
+    }
+
+    .foot {
+        font-size: 12px;
+        line-height: 1.8;
+    }
+}
+
+/* Very small screens */
+@media screen and (max-width: 350px) {
+
+    .hero h1 {
+        font-size: 25px;
+    }
+
+    .stats {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .sk-top {
+        align-items: flex-start;
+    }
+}
+
+/* =========================================
+   RESPONSIVE DESIGN - MOBILE & TABLET
+========================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.stApp {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.block-container {
+    width: 100%;
+    max-width: 980px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+/* Tablet */
+@media screen and (max-width: 768px) {
+
+    .block-container {
+        padding: 1rem 16px 2rem;
+    }
+
+    .hero {
+        padding: 32px 24px;
+        border-radius: 18px;
+    }
+
+    .hero h1 {
+        font-size: 36px;
+        overflow-wrap: anywhere;
+    }
+
+    .hero p {
+        font-size: 15px;
+        line-height: 1.9;
+    }
+
+    .stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .skgrid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .two,
+    .two.single {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .tl-item {
+        padding: 16px;
+    }
+
+    .sec h2 {
+        font-size: 23px;
+    }
+}
+
+/* Mobile */
+@media screen and (max-width: 480px) {
+
+    .block-container {
+        padding: 12px 12px 24px;
+    }
+
+    .hero {
+        padding: 26px 18px;
+        margin-bottom: 16px;
+    }
+
+    .hero h1 {
+        font-size: 30px;
+        line-height: 1.5;
+    }
+
+    .hero .role {
+        font-size: 16px;
+        line-height: 1.8;
+    }
+
+    .hero p {
+        font-size: 14px;
+    }
+
+    .hero .open {
+        font-size: 12px;
+        padding: 5px 10px;
+    }
+
+    .cta {
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: 12px;
+    }
+
+    .stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+    }
+
+    .stat {
+        padding: 14px 10px;
+        min-width: 0;
+    }
+
+    .stat b {
+        font-size: 27px;
+    }
+
+    .stat span {
+        font-size: 12px;
+        overflow-wrap: anywhere;
+    }
+
+    .skgrid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .sk {
+        padding: 14px;
+        min-width: 0;
+    }
+
+    .sk-top {
+        font-size: 13px;
+        flex-wrap: wrap;
+    }
+
+    .tl {
+        padding-inline-start: 20px;
+        margin-inline-start: 5px;
+    }
+
+    .tl-item {
+        padding: 14px;
+        margin-bottom: 12px;
+    }
+
+    .tl-item .r {
+        font-size: 16px;
+    }
+
+    .tl-item .d {
+        font-size: 13px;
+        line-height: 1.8;
+        overflow-wrap: anywhere;
+    }
+
+    .tl-item:before {
+        inset-inline-start: -31px;
+        width: 12px;
+        height: 12px;
+    }
+
+    .sec {
+        margin-bottom: 28px;
+    }
+
+    .sec h2 {
+        font-size: 21px;
+    }
+
+    .card {
+        padding: 16px;
+    }
+
+    .chips {
+        gap: 7px;
+    }
+
+    .chip {
+        font-size: 13px;
+        padding: 8px 12px;
+    }
+
+    .foot {
+        font-size: 12px;
+        line-height: 1.8;
+    }
+}
+
+/* Very small screens */
+@media screen and (max-width: 350px) {
+
+    .hero h1 {
+        font-size: 25px;
+    }
+
+    .stats {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .sk-top {
+        align-items: flex-start;
+    }
+}
+
