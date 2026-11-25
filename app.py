@@ -120,41 +120,67 @@ T = {
             ("مراقبة الشبكات واختبارات الاتصال", "adv"),
             ("تثبيت وتحديث Windows وOffice", "adv"),
             ("اختبار الجودة QA", "adv"),
-            ("تطويرodoo ", "mid"),
+            ("تطوير Odoo", "mid"),
             ("الدعم الفني وHelp Desk", "mid"),
             ("أساسيات Linux", "mid"),
             ("أساسيات الأمن السيبراني", "beg"),
             ("إدارة المخاطر", "beg"),
         ],
         "experiences": [
-    {
-        "role": "أخصائي مراقبة شبكات العملاء",
-        "org": "شركة الجريسي للخدمات الإلكترونية",
-        "date": "تاريخ الانضمام: 18 أغسطس 2024",
-        "desc": "مراقبة شبكات وخدمات العملاء بشكل مستمر ومتابعة الأعطال حتى استعادة الخدمة.",
-        "tasks": [
-            # اترك مهامك الحالية كما هي
-        ],
-        "skills": SK_NET,
-    },  {
-        "role": "أخصائي دعم فني وتقنية معلومات",
-        "org": "شركة الجريسي للخدمات الإلكترونية",
-        "date": "تاريخ الانضمام: 18 أغسطس 2024",
-        "desc": "دعم المستخدمين عن بعد وحضوريًا، وتجهيز الأجهزة وصيانتها وربطها بالشبكة.",
-        "tasks": [
-            # اترك مهامك الحالية كما هي
-        ],
-        "skills": SK_IT,
-    },
+            {
+                "role": "أخصائي مراقبة شبكات العملاء",
+                "org": "شركة الجريسي للخدمات الإلكترونية",
+                "date": "تاريخ الانضمام: 18 أغسطس 2024",
+                "desc": "مراقبة شبكات وخدمات العملاء بشكل مستمر ومتابعة الأعطال حتى استعادة الخدمة.",
+                "tasks": [
+                    "مراقبة شبكات وخدمات العملاء بشكل مستمر ورصد انقطاع الخدمة (Down).",
+                    "تنفيذ إجراءات استكشاف الأخطاء وإصلاحها لتحديد الأعطال ومعالجتها.",
+                    "استخدام أوامر الشبكة مثل Ping للتحقق من الاتصال وقياس استجابة الأجهزة.",
+                    "إجراء اختبارات الاتصال وتحليل نتائجها للمساعدة في تحديد أسباب الأعطال.",
+                    "فتح تذاكر دعم فني للأعطال ومتابعة أرقامها وحالة معالجتها.",
+                    "التنسيق مع الفرق الفنية ومزودي الخدمة لمتابعة المشاكل وتصعيدها عند الحاجة.",
+                    "متابعة الأعطال بشكل مستمر حتى عودة الاتصال والتأكد من استعادة الخدمة.",
+                ],
+                "skills": SK_NET,
+            },
+            {
+                "role": "أخصائي دعم فني وتقنية معلومات",
+                "org": "شركة الجريسي للخدمات الإلكترونية",
+                "date": "تاريخ الانضمام: 18 أغسطس 2024",
+                "desc": "دعم المستخدمين عن بعد وحضوريًا، وتجهيز الأجهزة وصيانتها وربطها بالشبكة.",
+                "tasks": [
+                    "تقديم الدعم الفني عن بعد وحضوريًا للمستخدمين وحل المشاكل التقنية.",
+                    "تثبيت أنظمة تشغيل Windows وإعادة ضبطها وتحديثها.",
+                    "تثبيت وتفعيل Microsoft Office وتطبيقات سطح المكتب.",
+                    "تجهيز وإعداد أجهزة الحاسب المكتبية والمحمولة للموظفين.",
+                    "ربط الأجهزة بدومين الشركة (Active Directory).",
+                    "تشخيص أعطال أجهزة الحاسب المكتبية والمحمولة ومكوناتها وإصلاحها.",
+                    "صيانة أجهزة الحاسب ومعالجة مشاكل الأداء والتشغيل.",
+                    "تجهيز الأجهزة وربطها بالشبكة والخدمات والأنظمة الداخلية.",
+                    "استقبال بلاغات الأعطال التقنية ومتابعتها حتى حلها.",
+                    "مساعدة المستخدمين في حل مشاكل البرامج والأنظمة والأجهزة.",
+                ],
+                "skills": SK_IT,
+            },
             {
                 "role": "مطور ومختبر Odoo",
                 "org": "شركة الجريسي للخدمات الإلكترونية",
                 "date": "تاريخ الانضمام: 18 أغسطس 2024",
                 "desc": "التنسيق بين فريق التطوير وفريق الجودة، واختبار خدمات Odoo في أكثر من 5 لوحات تحكم.",
                 "tasks": [
-                    # اترك مهامك الحالية كما هي
+                    "التنسيق بين فريق التطوير الداخلي في موهبة وفريق ضمان الجودة (QA).",
+                    "العمل على أكثر من 5 لوحات تحكم لخدمات مختلفة داخل نظام Odoo.",
+                    "التعامل مع الخدمات التي تعتمد على دورات الموافقات والخدمات التي لا تحتاج سلسلة موافقات.",
+                    "مراجعة وثائق متطلبات العمل (BRD) وتحليل المتطلبات الوظيفية قبل بدء الاختبار.",
+                    "التحقق من مطابقة الخدمات المطورة للمتطلبات المحددة في وثيقة BRD.",
+                    "اختبار الخدمات والوظائف بعد اكتمال تطويرها والتحقق من النتائج وسلامة مسار العمل.",
+                    "تنفيذ الاختبار الوظيفي والتحقق من انتقال الطلبات بشكل صحيح بين مراحل العمل والموافقات.",
+                    "رصد الأخطاء والملاحظات وتوثيقها ورفعها لفريق التطوير لمعالجتها.",
+                    "إعادة اختبار الخدمات بعد الإصلاح للتأكد من حل المشاكل.",
+                    "إعداد وتحديث ملفات Microsoft Excel لتوثيق الخدمات المسلّمة وحالة الاختبار والملاحظات.",
+                    "متابعة سير العمل والتنسيق بشأن حالة الخدمات بين فريق التطوير ومدير المشروع وفريق موهبة.",
+                    "إعداد ومشاركة تحديثات التقدم وإبقاء حالة الخدمات والاختبارات واضحة.",
                 ],
-
                 "skills": SK_ODOO,
             },
             {
@@ -176,6 +202,7 @@ T = {
                         "title": "المسح التجاري",
                         "tasks": [
                             "تنفيذ المسح التجاري ميدانيًا وزيارة وجمع بيانات أكثر من 1,000 محل ومنشأة تجارية.",
+                            "جمع بيانات السجل التجاري والأنشطة الاقتصادية للمنشآت.",
                             "تصنيف المحلات حسب نوع النشاط وطبيعة الخدمات أو المنتجات المقدمة.",
                             "جمع بيانات الإيرادات والدخل والتحقق من المعلومات التجارية.",
                             "تسجيل البيانات الميدانية والتحقق من اكتمالها ودقتها.",
@@ -204,14 +231,8 @@ T = {
     "en": {
         "dir": "ltr",
         "name": "Abdullah Nasser Al-Qahtani",
-        "title": "Technical Support & Network Monitoring | Web & Odoo Developer" ,
-        "org": "Al-Jreisi Electronic Services Company",
-        "date": "Joined: 18 August 2024",
+        "title": "Technical Support & Network Monitoring | Web & Odoo Developer",
         "tagline": "Open to opportunities in web development, networking, and cybersecurity",
-        "org": "Al-Jreisi Electronic Services Company",
-        "date": "Joined: 18 August 2024",
-        "org": "Al-Jreisi Electronic Services Company",
-        "date": "Joined: 18 August 2024",
         "bio": (
             "Graduate of the Web Application Programming and Development diploma at the "
             "Technical and Vocational Training Corporation (2024). I currently work in "
@@ -245,7 +266,8 @@ T = {
         "experiences": [
             {
                 "role": "Customer Network Monitoring Specialist",
-                "org": "Service provider | Current role",
+                "org": "Al-Jreisi Electronic Services Company",
+                "date": "Joined: 18 August 2024",
                 "desc": "Continuous monitoring of customer networks and services, following faults until service is restored.",
                 "tasks": [
                     "Continuously monitoring customer networks and services, and detecting service outages (Down).",
@@ -260,7 +282,8 @@ T = {
             },
             {
                 "role": "IT Technical Support Specialist",
-                "org": "",
+                "org": "Al-Jreisi Electronic Services Company",
+                "date": "Joined: 18 August 2024",
                 "desc": "Remote and on-site user support, device setup and maintenance, and network connection.",
                 "tasks": [
                     "Providing remote and on-site technical support to users and resolving technical issues.",
@@ -278,7 +301,8 @@ T = {
             },
             {
                 "role": "Odoo Systems Coordinator & QA Tester",
-                "org": "King Abdulaziz and His Companions Foundation for Giftedness and Creativity (Mawhiba) project",
+                "org": "Al-Jreisi Electronic Services Company",
+                "date": "Joined: 18 August 2024",
                 "desc": "Coordinating between the development and QA teams, and testing Odoo services across 5+ dashboards.",
                 "tasks": [
                     "Coordinating between Mawhiba's internal development team and the quality assurance (QA) team.",
@@ -314,7 +338,8 @@ T = {
                     {
                         "title": "Commercial Survey",
                         "tasks": [
-                            "Conducting field visits and collecting data from more than 1,000 shops and commercial establishments.",                            "Collecting commercial registration data and the economic activities of establishments.",
+                            "Conducting field visits and collecting data from more than 1,000 shops and commercial establishments.",
+                            "Collecting commercial registration data and the economic activities of establishments.",
                             "Classifying shops by activity type and the nature of the services or products offered.",
                             "Collecting revenue and income data and verifying commercial information.",
                             "Recording field data and verifying its completeness and accuracy.",
@@ -337,7 +362,7 @@ T = {
             "meta": f"Graduated 2024 | GPA {GPA} / 5",
         },
         "languages": {"Arabic": "Native", "English": "Good"},
-        "footer": "جميع الحقوق محفوظة © عبدالله ناصر القحطاني",
+        "footer": "All rights reserved © Abdullah Nasser Al-Qahtani",
     },
 }
 # ==========================================================
