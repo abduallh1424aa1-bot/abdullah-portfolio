@@ -425,16 +425,46 @@ body,
     margin-top: 6px;
     font-size: 14px;
 }
-
 /* صفوف اللغات */
-.lang {
+.languages-list {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 20px;
     display: flex;
-    justify-content: space-between;
-    color: var(--ink);
-    padding: 6px 0;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
+    flex-wrap: wrap;
+    text-align: center;
+    direction: inherit;
+}
+/* Languages */
+.languages-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
+    flex-wrap: wrap;
+    text-align: center;
 }
 
-.lang span:last-child {
+.lang {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    direction: inherit;
+    color: var(--ink);
+    padding: 6px;
+}
+
+.lang-name {
+    font-weight: 700;
+    color: var(--ink);
+}
+
+.lang-level {
     color: var(--muted);
 }
 
@@ -903,4 +933,112 @@ html, body {
         align-items: flex-start;
     }
 }
+/* محاذاة النصوص حسب اتجاه اللغة */
+.stApp .hero,
+.stApp .sec,
+.stApp .sec h2,
+.stApp .tl-item,
+.stApp .card,
+.stApp .sk {
+    text-align: start !important;
+}
 
+
+/* ==========================================================
+   تحسين بطاقات الخبرات وفتح وإغلاق التفاصيل
+   ========================================================== */
+
+.tl-item {
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tl-item summary {
+    position: relative;
+    display: block;
+    cursor: pointer;
+    list-style: none;
+    padding-inline-end: 35px;
+}
+
+.tl-item summary::-webkit-details-marker {
+    display: none;
+}
+
+.tl-item summary::after {
+    content: "⌄";
+    position: absolute;
+    inset-inline-end: 4px;
+    top: 2px;
+    color: var(--cyan);
+    font-size: 25px;
+    font-weight: 700;
+    transition: transform 0.2s ease;
+}
+
+.tl-item[open] {
+    border-color: var(--cyan);
+    box-shadow: 0 5px 20px rgba(63, 208, 240, 0.08);
+}
+
+.tl-item[open] summary::after {
+    content: "⌃";
+}
+
+.tl-item summary:hover .r {
+    color: var(--cyan);
+}
+
+.tl-item .more {
+    border-top: 1px solid var(--line);
+    margin-top: 18px;
+    padding-top: 16px;
+    line-height: 1.9;
+}
+
+.tl-item .mh {
+    color: var(--cyan);
+    font-weight: 700;
+    margin: 16px 0 8px;
+}
+
+.tl-item .more ul {
+    padding-inline-start: 22px;
+    color: var(--ink);
+}
+
+.tl-item .more li {
+    margin-bottom: 8px;
+}
+
+.tl-item .more .chips {
+    margin-top: 10px;
+}
+.date {
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+/* أزرار تحميل السيرة الذاتية والتواصل */
+.stDownloadButton button,
+.stLinkButton a {
+    background-color: #1769D2 !important;
+    color: #FFFFFF !important;
+    border: 1px solid #1769D2 !important;
+    transition: all 0.2s ease;
+}
+
+/* عند تمرير الماوس */
+.stDownloadButton button:hover,
+.stLinkButton a:hover {
+    background-color: #1256B0 !important;
+    color: #FFFFFF !important;
+    border-color: #1256B0 !important;
+}
+
+/* لون النص والأيقونات داخل الأزرار */
+.stDownloadButton button *,
+.stLinkButton a * {
+    color: #FFFFFF !important;
+}

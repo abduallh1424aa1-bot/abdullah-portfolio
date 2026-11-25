@@ -4,13 +4,15 @@ import json
 import re
 from datetime import datetime
 from pathlib import Path
+CV_FILE = Path(__file__).parent / "CV.pdf"
+
 
 import streamlit as st
 
 st.set_page_config(
     page_title="Abdullah Al-Qahtani | عبدالله القحطاني",
     page_icon="🧭",
-    layout="centered"
+    layout="centered",
 )
 
 LINKEDIN = "https://www.linkedin.com/in/abdullah-al-qahtani-878bb32a7"
@@ -44,6 +46,8 @@ def save_visit(lang, ref):
     VISITS_FILE.write_text(json.dumps(visits, ensure_ascii=False), encoding="utf-8")
 
 
+
+
 def get_admin_password():
     try:
         return str(st.secrets["ADMIN_PASSWORD"]), None
@@ -52,10 +56,43 @@ def get_admin_password():
 
 
 # ==========================================================
+#  المهارات المكتسبة لكل خبرة (مشتركة بين العربي والإنجليزي)
+# ==========================================================
+SK_NET = [
+    "Network Monitoring",
+    "Network Troubleshooting",
+    "Connectivity Testing",
+    "Ping Commands",
+]
+SK_IT = [
+    "IT Technical Support",
+    "Windows Installation & Configuration",
+    "Microsoft Office Installation & Activation",
+    "Active Directory & Domain Join",
+    "PC & Laptop Troubleshooting",
+    "Hardware & Software Maintenance",
+    "Remote Technical Support",
+    "IT Incident Management",
+]
+SK_ODOO = [
+    "Odoo ERP",
+    "Software Quality Assurance (QA)",
+    "Functional Testing",
+    "BRD Analysis & Requirements Validation",
+    "Approval Workflows",
+    "Dashboard Testing",
+    "Bug Tracking & Reporting",
+    "Microsoft Excel",
+    "Team Coordination",
+    "Project Progress Tracking",
+]
+
+# ==========================================================
 #  المحتوى باللغتين - عدّل النصوص هنا
 #  (أي شي تضيفه في "ar" أضفه في "en" بعد)
 # ==========================================================
 T = {
+    # ------------------------------ العربي ------------------------------
     "ar": {
         "dir": "rtl",
         "name": "عبدالله ناصر القحطاني",
@@ -76,43 +113,75 @@ T = {
         "h_exp": "الخبرات والمشاريع",
         "h_certs": "الشهادات والدورات",
         "h_lang": "اللغات",
+        "h_tasks": "المهام والمسؤوليات",
+        "h_gained": "المهارات المكتسبة",
         "level": {"adv": "متقدم", "mid": "متوسط", "beg": "مبتدئ"},
         "skills": [
-            ("الدعم الفني وHelp Desk", "adv"),
             ("مراقبة الشبكات واختبارات الاتصال", "adv"),
             ("تثبيت وتحديث Windows وOffice", "adv"),
-            ("تطوير وتخصيص Odoo", "mid"),
-            ("تطوير الويب", "mid"),
-            ("اختبار الجودة QA", "mid"),
-            ("أساسيات Linux", "beg"),
+            ("اختبار الجودة QA", "adv"),
+            ("تطويرodoo ", "mid"),
+            ("الدعم الفني وHelp Desk", "mid"),
+            ("أساسيات Linux", "mid"),
             ("أساسيات الأمن السيبراني", "beg"),
             ("إدارة المخاطر", "beg"),
         ],
         "experiences": [
+    {
+        "role": "أخصائي مراقبة شبكات العملاء",
+        "org": "شركة الجريسي للخدمات الإلكترونية",
+        "date": "تاريخ الانضمام: 18 أغسطس 2024",
+        "desc": "مراقبة شبكات وخدمات العملاء بشكل مستمر ومتابعة الأعطال حتى استعادة الخدمة.",
+        "tasks": [
+            # اترك مهامك الحالية كما هي
+        ],
+        "skills": SK_NET,
+    },  {
+        "role": "أخصائي دعم فني وتقنية معلومات",
+        "org": "شركة الجريسي للخدمات الإلكترونية",
+        "date": "تاريخ الانضمام: 18 أغسطس 2024",
+        "desc": "دعم المستخدمين عن بعد وحضوريًا، وتجهيز الأجهزة وصيانتها وربطها بالشبكة.",
+        "tasks": [
+            # اترك مهامك الحالية كما هي
+        ],
+        "skills": SK_IT,
+    },
             {
-                "role": "أخصائي مراقبة شبكات",
-                "org": "الدور الحالي",
-                "desc": "مراقبة مستمرة لضمان استمرار الخدمة، واختبارات اتصال وحل الأعطال حتى عودة الاتصال.",
-            },
-            {
-                "role": "أخصائي دعم فني",
-                "org": "",
-                "desc": "دعم عن بعد وميداني، تثبيت الأنظمة وتفعيل Office، تجهيز وصيانة الحواسيب.",
-            },
-            {
-                "role": "مطور Odoo ومختبر جودة",
-                "org": "مشروع مؤسسة الملك عبدالعزيز ورجاله للموهبة والإبداع (موهبة)",
-                "desc": "تطوير وتخصيص وحدات وسير عمل Odoo، مع اختبار الجودة (QA) بخبرة عملية تزيد عن سنة.",
-            },
-            {
-                "role": "مطور ويب",
-                "org": "الجريسي للخدمات الإلكترونية",
-                "desc": "بناء تطبيقات ويب ضمن فريق تقني محترف.",
+                "role": "مطور ومختبر Odoo",
+                "org": "شركة الجريسي للخدمات الإلكترونية",
+                "date": "تاريخ الانضمام: 18 أغسطس 2024",
+                "desc": "التنسيق بين فريق التطوير وفريق الجودة، واختبار خدمات Odoo في أكثر من 5 لوحات تحكم.",
+                "tasks": [
+                    # اترك مهامك الحالية كما هي
+                ],
+
+                "skills": SK_ODOO,
             },
             {
                 "role": "باحث ميداني",
                 "org": "الهيئة العامة للإحصاء",
-                "desc": "المشاركة في المسوح الاقتصادية والزراعية.",
+                "desc": "المشاركة في المسح الزراعي والمسح التجاري وجمع البيانات الميدانية.",
+                "groups": [
+                    {
+                        "title": "المسح الزراعي",
+                        "tasks": [
+                            "حصر أعداد أشجار النخيل والأشجار والآبار الزراعية.",
+                            "جمع بيانات الثروة الداجنة وتصنيفها إلى دواجن لاحم وبياض وأمهات.",
+                            "تسجيل أنواع الأنشطة الزراعية ومكونات المزارع وبيانات ملكيتها.",
+                            "جمع بيانات الدخل والإيرادات والمصروفات والتكاليف التشغيلية للمزارع.",
+                            "تغطية مناطق جغرافية متعددة، بما فيها المناطق النائية، وتنفيذ الزيارات الميدانية.",
+                        ],
+                    },
+                    {
+                        "title": "المسح التجاري",
+                        "tasks": [
+                            "تنفيذ المسح التجاري ميدانيًا وزيارة وجمع بيانات أكثر من 1,000 محل ومنشأة تجارية.",
+                            "تصنيف المحلات حسب نوع النشاط وطبيعة الخدمات أو المنتجات المقدمة.",
+                            "جمع بيانات الإيرادات والدخل والتحقق من المعلومات التجارية.",
+                            "تسجيل البيانات الميدانية والتحقق من اكتمالها ودقتها.",
+                        ],
+                    },
+                ],
             },
         ],
         "certs": [
@@ -128,14 +197,21 @@ T = {
             "school": "المؤسسة العامة للتدريب التقني والمهني",
             "meta": f"تخرج 2024 | المعدل {GPA} من 5",
         },
-        "languages": {"العربية": "اللغة الأم", "الإنجليزية": "جيد"},
+        "languages": {"العربية :": "اللغة الأم", "الإنجليزية :": "جيد"},
         "footer": "صُممت هذه الصفحة وبُنيت بلغة Python وStreamlit | تُسجل الزيارات بشكل مجهول للإحصاءات",
     },
+    # ---------------------------- الإنجليزي ----------------------------
     "en": {
         "dir": "ltr",
         "name": "Abdullah Nasser Al-Qahtani",
-        "title": "Technical Support & Network Monitoring | Web & Odoo Developer",
+        "title": "Technical Support & Network Monitoring | Web & Odoo Developer" ,
+        "org": "Al-Jreisi Electronic Services Company",
+        "date": "Joined: 18 August 2024",
         "tagline": "Open to opportunities in web development, networking, and cybersecurity",
+        "org": "Al-Jreisi Electronic Services Company",
+        "date": "Joined: 18 August 2024",
+        "org": "Al-Jreisi Electronic Services Company",
+        "date": "Joined: 18 August 2024",
         "bio": (
             "Graduate of the Web Application Programming and Development diploma at the "
             "Technical and Vocational Training Corporation (2024). I currently work in "
@@ -152,6 +228,8 @@ T = {
         "h_exp": "Experience & Projects",
         "h_certs": "Certificates & Courses",
         "h_lang": "Languages",
+        "h_tasks": "Responsibilities",
+        "h_gained": "Skills gained",
         "level": {"adv": "Advanced", "mid": "Intermediate", "beg": "Beginner"},
         "skills": [
             ("Technical Support & Help Desk", "adv"),
@@ -166,29 +244,83 @@ T = {
         ],
         "experiences": [
             {
-                "role": "Network Monitoring Specialist",
-                "org": "Current role",
-                "desc": "Continuous monitoring to keep services running, connectivity testing, and troubleshooting until the connection is restored.",
+                "role": "Customer Network Monitoring Specialist",
+                "org": "Service provider | Current role",
+                "desc": "Continuous monitoring of customer networks and services, following faults until service is restored.",
+                "tasks": [
+                    "Continuously monitoring customer networks and services, and detecting service outages (Down).",
+                    "Performing troubleshooting to identify and resolve faults.",
+                    "Using network commands such as Ping to verify connectivity and measure device response.",
+                    "Running connectivity tests and analyzing results to help identify the causes of faults.",
+                    "Opening technical support tickets for faults and tracking their numbers and handling status.",
+                    "Coordinating with technical teams and service providers to follow up on issues and escalate them when needed.",
+                    "Following faults continuously until connectivity is restored and service is confirmed back.",
+                ],
+                "skills": SK_NET,
             },
             {
-                "role": "Technical Support Specialist",
+                "role": "IT Technical Support Specialist",
                 "org": "",
-                "desc": "Remote and on-site support, operating system installation, Office activation, and computer setup and maintenance.",
+                "desc": "Remote and on-site user support, device setup and maintenance, and network connection.",
+                "tasks": [
+                    "Providing remote and on-site technical support to users and resolving technical issues.",
+                    "Installing, reconfiguring, and updating Windows operating systems.",
+                    "Installing and activating Microsoft Office and desktop applications.",
+                    "Preparing and configuring desktop and laptop computers for employees.",
+                    "Joining computers to the company domain (Active Directory).",
+                    "Diagnosing and repairing faults in desktop and laptop computers and their components.",
+                    "Maintaining computers and resolving performance and operation issues.",
+                    "Setting up devices and connecting them to the network, services, and internal systems.",
+                    "Receiving technical incident reports and following them up until resolved.",
+                    "Helping users resolve software, system, and hardware issues.",
+                ],
+                "skills": SK_IT,
             },
             {
-                "role": "Odoo Developer & QA Tester",
+                "role": "Odoo Systems Coordinator & QA Tester",
                 "org": "King Abdulaziz and His Companions Foundation for Giftedness and Creativity (Mawhiba) project",
-                "desc": "Developed and customized Odoo modules and workflows, along with QA testing, with over a year of hands-on QA experience.",
-            },
-            {
-                "role": "Web Developer",
-                "org": "Al-Jeraisy Electronic Services",
-                "desc": "Built web applications as part of a professional technical team.",
+                "desc": "Coordinating between the development and QA teams, and testing Odoo services across 5+ dashboards.",
+                "tasks": [
+                    "Coordinating between Mawhiba's internal development team and the quality assurance (QA) team.",
+                    "Working on more than 5 dashboards for different services within the Odoo system.",
+                    "Handling services that rely on approval workflows, as well as services without approval chains.",
+                    "Reviewing Business Requirements Documents (BRD) and analyzing functional requirements before testing begins.",
+                    "Verifying that the developed services match the requirements defined in the BRD.",
+                    "Testing services and functions after development is complete, and verifying results and workflow integrity.",
+                    "Performing functional testing and verifying that requests move correctly between workflow and approval stages.",
+                    "Detecting, documenting, and reporting bugs and observations to the development team for resolution.",
+                    "Retesting services after fixes to confirm that the issues were resolved.",
+                    "Preparing and updating Microsoft Excel files to document delivered services, test status, and observations.",
+                    "Tracking work progress and coordinating service status between the development team, the project manager, and the Mawhiba team.",
+                    "Preparing and sharing progress updates and keeping the status of services and tests clear.",
+                ],
+                "skills": SK_ODOO,
             },
             {
                 "role": "Field Researcher",
                 "org": "General Authority for Statistics",
-                "desc": "Took part in economic and agricultural field surveys.",
+                "desc": "Took part in the agricultural and commercial surveys, collecting field data.",
+                "groups": [
+                    {
+                        "title": "Agricultural Survey",
+                        "tasks": [
+                            "Counting palm trees, other trees, and agricultural wells.",
+                            "Collecting poultry data and classifying it into broilers, layers, and breeders.",
+                            "Recording types of agricultural activity, farm components, and ownership data.",
+                            "Collecting income, revenue, expense, and operating cost data for farms.",
+                            "Covering multiple geographic areas, including remote regions, through field visits.",
+                        ],
+                    },
+                    {
+                        "title": "Commercial Survey",
+                        "tasks": [
+                            "Conducting field visits and collecting data from more than 1,000 shops and commercial establishments.",                            "Collecting commercial registration data and the economic activities of establishments.",
+                            "Classifying shops by activity type and the nature of the services or products offered.",
+                            "Collecting revenue and income data and verifying commercial information.",
+                            "Recording field data and verifying its completeness and accuracy.",
+                        ],
+                    },
+                ],
             },
         ],
         "certs": [
@@ -208,7 +340,6 @@ T = {
         "footer": "Designed and built with Python and Streamlit | Visits are logged anonymously for statistics",
     },
 }
-
 # ==========================================================
 #  وضع الأدمن: الرابط ?admin=1 يفعّل لوحة الإحصاءات طول الجلسة
 # ==========================================================
@@ -250,9 +381,17 @@ st.markdown(f"<style>{css_text}</style>", unsafe_allow_html=True)
 st.markdown(f"<style>.stApp{{direction:{d['dir']};}}</style>", unsafe_allow_html=True)
 
 # ==========================================================
-#  بناء الصفحة
+#  دوال بناء الأقسام
 # ==========================================================
 e = html.escape
+
+
+def chips_html(items):
+    return '<div class="chips">' + "".join(f'<span class="chip">{e(i)}</span>' for i in items) + "</div>"
+
+
+def tasks_html(items):
+    return "<ul>" + "".join(f"<li>{e(t)}</li>" for t in items) + "</ul>"
 
 
 def skills_html():
@@ -278,27 +417,69 @@ def education_html():
     )
 
 
+
+
 def experience_html():
     out = []
+
     for x in d["experiences"]:
-        org = f'<div class="o">{e(x["org"])}</div>' if x["org"] else ""
-        out.append(
-            f'<div class="tl-item"><div class="r">{e(x["role"])}</div>{org}'
-            f'<div class="d">{e(x["desc"])}</div></div>'
+
+        org = (
+            f'<div class="o">{e(x["org"])}</div>'
+            if x.get("org") else ""
         )
-    return '<div class="tl">' + "".join(out) + "</div>"
+
+        date = (
+            f'<div class="date">{e(x["date"])}</div>'
+            if x.get("date") else ""
+        )
+
+        body = ""
+
+        if x.get("tasks"):
+            body += f'<div class="mh">{e(d["h_tasks"])}</div>'
+            body += tasks_html(x["tasks"])
+
+        for g in x.get("groups", []):
+            body += f'<div class="mh">{e(g["title"])}</div>'
+            body += tasks_html(g["tasks"])
+
+        if x.get("skills"):
+            body += f'<div class="mh">{e(d["h_gained"])}</div>'
+            body += chips_html(x["skills"])
+
+        out.append(
+            f'<details class="tl-item">'
+            f'<summary>'
+            f'<div class="r">{e(x["role"])}</div>'
+            f'</summary>'
+            f'<div class="more">'
+            f'{org}'
+            f'{date}'
+            f'<div class="d">{e(x["desc"])}</div>'
+            f'{body}'
+            f'</div>'
+            f'</details>'
+        )
+
+    return '<div class="tl">' + "".join(out) + '</div>'
 
 
-def chips_html(items):
-    return '<div class="chips">' + "".join(f'<span class="chip">{e(i)}</span>' for i in items) + "</div>"
 
 
 def languages_html():
     langs = "".join(
-        f'<div class="lang"><span>{e(k)}</span><span>{e(v)}</span></div>'
+        '<div class="lang">'
+        f'<span class="lang-name">{e(k)}</span>'
+        f'<span class="lang-level">{e(v)}</span>'
+        "</div>"
         for k, v in d["languages"].items()
     )
-    return f'<div class="two single"><div class="card">{langs}</div></div>'
+    return (
+        '<div class="two single">'
+        f'<div class="card languages-list" dir="{d["dir"]}">{langs}</div>'
+        "</div>"
+    )
 
 
 def section(heading, body):
@@ -308,11 +489,48 @@ def section(heading, body):
 # ==========================================================
 #  الصفحة (ترتيب الأقسام: غيّر ترتيب الأسطر لتغيير الترتيب)
 # ==========================================================
-page = (
+
+
+
+# ==========================================================
+# الصفحة الرئيسية
+# ==========================================================
+
+# أزرار التواصل وتحميل السيرة الذاتية
+# الصفحة الرئيسية
+
+hero = (
     f'<div class="hero"><div class="open"><i></i>{e(d["tagline"])}</div>'
     f'<h1>{e(d["name"])}</h1><div class="role">{e(d["title"])}</div>'
-    f'<p>{e(d["bio"])}</p>'
-    f'<a class="cta" href="{e(LINKEDIN)}" target="_blank" rel="noopener">{e(d["cta"])}</a></div>'
+    f'<p>{e(d["bio"])}</p></div>'
+)
+
+st.markdown(hero, unsafe_allow_html=True)
+
+# أزرار التواصل وتحميل السيرة الذاتية
+col_cv, col_linkedin = st.columns(2)
+
+with col_cv:
+    if CV_FILE.is_file():
+        st.download_button(
+            label="📄 تحميل السيرة الذاتية" if lang == "ar" else "📄 Download CV",
+            data=CV_FILE.read_bytes(),
+            file_name="Abdullah_Alqahtani_CV.pdf",
+            mime="application/pdf",
+            use_container_width=True,
+        )
+    else:
+        st.warning("ملف CV.pdf غير موجود")
+
+with col_linkedin:
+    st.link_button(
+        label=d["cta"],
+        url=LINKEDIN,
+        use_container_width=True,
+    )
+
+# بقية أقسام الصفحة
+page = (
     f'<div class="stats">'
     f'<div class="stat"><b>{e(GPA)}</b><span>{e(d["stat_gpa"])}</span></div>'
     f'<div class="stat"><b>{len(d["experiences"])}</b><span>{e(d["stat_roles"])}</span></div>'
@@ -327,6 +545,7 @@ page = (
 )
 
 st.markdown(page, unsafe_allow_html=True)
+
 
 # ==========================================================
 #  لوحة الإحصاءات (تظهر فقط لو فتحت الرابط بـ ?admin=1)
@@ -355,3 +574,6 @@ if is_admin_view:
             st.dataframe(df.tail(20))
     elif pwd:
         st.error("كلمة السر غير صحيحة")
+
+
+
