@@ -198,7 +198,7 @@ T = {
             "meta": f"تخرج 2024 | المعدل {GPA} من 5",
         },
         "languages": {"العربية :": "اللغة الأم", "الإنجليزية :": "جيد"},
-        "footer": "صُممت هذه الصفحة وبُنيت بلغة Python وStreamlit | تُسجل الزيارات بشكل مجهول للإحصاءات",
+        "footer": "جميع الحقوق محفوظة © عبدالله ناصر القحطاني",
     },
     # ---------------------------- الإنجليزي ----------------------------
     "en": {
@@ -337,7 +337,7 @@ T = {
             "meta": f"Graduated 2024 | GPA {GPA} / 5",
         },
         "languages": {"Arabic": "Native", "English": "Good"},
-        "footer": "Designed and built with Python and Streamlit | Visits are logged anonymously for statistics",
+        "footer": "جميع الحقوق محفوظة © عبدالله ناصر القحطاني",
     },
 }
 # ==========================================================
